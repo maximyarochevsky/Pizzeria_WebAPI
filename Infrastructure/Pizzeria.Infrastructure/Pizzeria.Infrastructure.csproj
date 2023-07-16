@@ -7,8 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pizzeria.Application\Pizzeria.Application.csproj" />
-    <ProjectReference Include="..\Pizzeria.Domain\Pizzeria.Domain.csproj" />
+    <ProjectReference Include="..\..\Core\Pizzeria.Application\Pizzeria.Application.csproj" />
+    <ProjectReference Include="..\..\Core\Pizzeria.Domain\Pizzeria.Domain.csproj" />
   </ItemGroup>
+
 
 </Project>
