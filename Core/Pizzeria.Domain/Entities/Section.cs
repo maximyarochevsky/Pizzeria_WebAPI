@@ -1,6 +1,9 @@
-﻿namespace Pizzeria.Domain.Entities;
+﻿using Pizzeria.Domain.Entities.Base;
 
-public class Section
+namespace Pizzeria.Domain.Entities;
+
+public class Section: Entity
 {
-
+    public ICollection<Product> Products { get; set; }
+    public string Name { get; set; }
 }

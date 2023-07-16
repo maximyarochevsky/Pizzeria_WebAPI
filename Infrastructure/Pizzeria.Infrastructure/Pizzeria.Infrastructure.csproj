@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Core\Pizzeria.Application\Pizzeria.Application.csproj" />
     <ProjectReference Include="..\..\Core\Pizzeria.Domain\Pizzeria.Domain.csproj" />
   </ItemGroup>
