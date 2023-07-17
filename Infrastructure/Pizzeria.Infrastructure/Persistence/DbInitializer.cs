@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Pizzeria.Infrastructure.Persistence;
 
-namespace Pizzeria.Infrastructure.Persistence
+public class DbInitializer
 {
-    internal class DbInitializer
+    public static void Initialize(PizzeriaDbContext context)
     {
+        context.Database.EnsureCreated();
     }
 }
