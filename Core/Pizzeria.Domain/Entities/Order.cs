@@ -4,6 +4,7 @@ namespace Pizzeria.Domain.Entities;
 
 public class Order: Entity
 {
+    public Guid UserId { get; set; }
     public decimal TotalPrice { get; set; }
     public string? Description { get; set; }
     public string Address { get; set; }

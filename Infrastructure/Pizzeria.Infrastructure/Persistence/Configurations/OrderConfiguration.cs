@@ -11,6 +11,7 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
     public void Configure(EntityTypeBuilder<Order> builder)
     {
         builder.HasKey(order => order.Id);
+        builder.HasKey(order => order.UserId);
         builder.Property(order => order.TotalPrice);
         builder.Property(order => order.Description);
         builder.Property(order => order.Address);
