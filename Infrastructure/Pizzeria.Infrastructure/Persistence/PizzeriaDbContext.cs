@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Pizzeria.Application.Interfaces;
 using Pizzeria.Domain.Entities;
 using Pizzeria.Infrastructure.Persistence.Configurations;
 
 namespace Pizzeria.Infrastructure.Persistence;
 
-public class PizzeriaDbContext : DbContext
+public class PizzeriaDbContext : DbContext, IPizzeriaDbContext
 {
     public DbSet<Section> Sections { get; set; }
     public DbSet<Product> Products { get; set; }
