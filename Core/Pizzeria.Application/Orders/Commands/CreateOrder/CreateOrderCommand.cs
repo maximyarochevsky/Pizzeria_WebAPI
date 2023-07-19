@@ -9,6 +9,5 @@ public class CreateOrderCommand : IRequest<Guid>
     public string Address { get; set; }
     public string Phone { get; set; }
     public string Description { get; set; }
-    public ICollection<OrderItem> Items { get; set; }
 }
 

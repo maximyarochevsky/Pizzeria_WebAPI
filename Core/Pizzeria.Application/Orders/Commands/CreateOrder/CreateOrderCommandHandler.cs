@@ -21,7 +21,7 @@ public class CreateOrderCommandHandler :
                 Address = request.Address,
                 Description = request.Description,
                 Phone = request.Phone,
-                Items = request.Items,
+                Items = null,
                 Id = Guid.NewGuid(),
                 Date = DateTime.Now,
             };

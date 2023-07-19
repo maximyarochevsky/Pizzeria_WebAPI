@@ -1,21 +1,31 @@
+using System.Reflection;
 using Pizzeria.Application;
+using Pizzeria.Application.Common.Mappings;
 using Pizzeria.Infrastructure.Persistence;
+using Microsoft.Extensions.DependencyInjection;
+using Pizzeria.Application.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
+
+services.AddControllers();
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen(); 
+
+services.AddApplication().AddInfrastructure(builder.Configuration);
+
+services.AddCors(options =>
 {
-    builder.Services
-        .AddApplication()
-        .AddInfrastructure(builder.Configuration);
-}
-
-
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+    options.AddPolicy("AllowAllHeaders", builder =>
+    {
+        builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
