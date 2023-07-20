@@ -10,7 +10,6 @@ public class SectionConfiguration : IEntityTypeConfiguration<Section>
     {
         builder.HasKey(section => section.Id);
         builder.Property(section => section.Name);
-        builder.HasMany(section => section.Products);
     }
 }
 

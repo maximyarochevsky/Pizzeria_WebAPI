@@ -11,8 +11,8 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
         builder.HasKey(product => product.Id);
         builder.Property(product => product.Name);
         builder.Property(product => product.Description);
-        builder.Property(product => product.Price);
+        builder.Property(product => product.Price)
+            .HasColumnType("decimal(18,2)");
         builder.HasOne(product => product.Section);
-        builder.HasOne(product => product.Orders);
     }
 }
