@@ -4,12 +4,11 @@ namespace Pizzeria.Domain.Entities;
 
 public class Order: Entity
 {
-    public Guid UserId { get; set; }
     public decimal TotalPrice { get; set; }
     public string? Description { get; set; }
     public string Address { get; set; }
     public string Phone { get; set; }
     public DateTimeOffset Date { get; set; } = DateTimeOffset.Now;
-    public ICollection<OrderItem>? Items { get; set; }
+    public List<OrderItem>? Items { get; set; }
 }
 

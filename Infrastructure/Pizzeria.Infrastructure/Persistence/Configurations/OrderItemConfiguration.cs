@@ -9,7 +9,8 @@ public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
     public void Configure(EntityTypeBuilder<OrderItem> builder)
     {
         builder.HasKey(orderItem => orderItem.Id);
-        builder.Property(orderItem => orderItem.TotalPrice);
+        builder.Property(orderItem => orderItem.TotalPrice)
+            .HasColumnType("decimal(18,2)");
         builder.Property(orderItem => orderItem.Price);
         builder.Property(orderItem => orderItem.Quantity);
         builder.HasOne(orderItem => orderItem.Product);
