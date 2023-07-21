@@ -17,7 +17,6 @@ public class CreateOrderCommandHandler :
         {
             var order = new Order
             {
-                UserId = request.UserId,
                 Address = request.Address,
                 Description = request.Description,
                 Phone = request.Phone,
