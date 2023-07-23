@@ -1,5 +1,7 @@
 using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using Pizzeria.Application;
+using Microsoft.Extensions.Configuration;
 using Pizzeria.Application.Common.Mappings;
 using Pizzeria.Infrastructure.Persistence;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,9 +12,26 @@ var services = builder.Services;
 
 services.AddControllers();
 services.AddEndpointsApiExplorer();
-services.AddSwaggerGen(); 
+services.AddSwaggerGen();
 
-services.AddApplication().AddInfrastructure(builder.Configuration);
+services.AddApplication();
+var connectionString = builder.Configuration["DbConnection"];
+
+services.AddControllers();
+
+services.AddDbContext<PizzeriaDbContext>(options =>
+    { options.UseNpgsql(connectionString); });
+
+services.AddScoped<IPizzeriaDbContext>(provider =>
+    provider.GetService<PizzeriaDbContext>());
+
+
+services.AddTransient<IDbInitializer, DbInitializer>();
+services.AddAutoMapper(config =>
+{
+    config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
+    config.AddProfile(new AssemblyMappingProfile(typeof(IPizzeriaDbContext).Assembly));
+});
 
 services.AddCors(options =>
 {
@@ -25,6 +44,12 @@ services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+await using (var scope = app.Services.CreateAsyncScope())
+{
+    var db_initializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+    await db_initializer.InitializeAsync(RemoveBefore: true).ConfigureAwait(true);
+}
 
 if (app.Environment.IsDevelopment())
 {
