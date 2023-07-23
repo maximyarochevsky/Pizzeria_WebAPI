@@ -15,9 +15,6 @@ public static class DependencyInjection
         services.AddDbContext<PizzeriaDbContext>(options => 
             { options.UseNpgsql(connectionString); });
 
-        services.AddScoped<IPizzeriaDbContext>(provider =>
-            provider.GetService<PizzeriaDbContext>());
-
         return services;
     }
 }
