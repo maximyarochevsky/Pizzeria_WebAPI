@@ -7,6 +7,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Pizzeria.Application.Interfaces;
+using Pizzeria.Application.Interfaces.Persistence;
 
 namespace Pizzeria.Application.Products.Queries.GetProductDetails
 {
@@ -14,14 +15,15 @@ namespace Pizzeria.Application.Products.Queries.GetProductDetails
     {
         private readonly IPizzeriaDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public GetProductDetailsQueryHandler(IPizzeriaDbContext dbContext, IMapper mapper)
-         =>(_dbContext, _mapper) = (dbContext,mapper);
+        public GetProductDetailsQueryHandler(IPizzeriaDbContext dbContext, IMapper mapper, IUnitOfWork unitOfWork)
+         =>(_dbContext, _mapper, _unitOfWork) = (dbContext,mapper, unitOfWork);
            
         public async Task<ProductDetailsVm> Handle(GetProductDetailsQuery request, CancellationToken token)
         {
-            var entity = await _dbContext.Products
-                .FirstOrDefaultAsync(e => e.Id == request.Id, token);
+            var entity = await _unitOfWork.Products.GetProductById(request.Id);
+
             if (entity is null)
             {
                 throw new ArgumentException();

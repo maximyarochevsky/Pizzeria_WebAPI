@@ -15,11 +15,5 @@ namespace Pizzeria_WebAPI.Controllers
         {
             _mediator = mediator;
         }
-
-        [HttpPost("create")]
-        public async Task<Guid> CreateOrder(Order order)
-        {
-            var command = order;
-        }
     }
 }
