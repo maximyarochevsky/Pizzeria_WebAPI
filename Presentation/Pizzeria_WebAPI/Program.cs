@@ -14,19 +14,11 @@ services.AddControllers();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
-services.AddApplication();
-var connectionString = builder.Configuration["DbConnection"];
+services.AddApplication().AddInfrastructure(builder.Configuration);
 
 services.AddControllers();
 
-services.AddDbContext<PizzeriaDbContext>(options =>
-    { options.UseNpgsql(connectionString); });
 
-services.AddScoped<IPizzeriaDbContext>(provider =>
-    provider.GetService<PizzeriaDbContext>());
-
-
-services.AddTransient<IDbInitializer, DbInitializer>();
 services.AddAutoMapper(config =>
 {
     config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
