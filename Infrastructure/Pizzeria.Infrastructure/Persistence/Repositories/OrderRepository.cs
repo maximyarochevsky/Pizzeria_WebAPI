@@ -9,12 +9,12 @@ public class OrderRepository : GenericRepository<Order>, IOrderRepository
     {
     }
 
-    public Task<List<Order>> GetAllOrders(int id)
+    public Task<List<Order>> GetAllOrders(Guid id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Order> GetOrderById(int id)
+    public Task<Order> GetOrderById(Guid id)
     {
         throw new NotImplementedException();
     }

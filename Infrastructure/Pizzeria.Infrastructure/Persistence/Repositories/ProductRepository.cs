@@ -20,7 +20,7 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
 
     public Task<Product> GetProductById(Guid id)
     {
-        return _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+        return _dbContext.Products.Include(p=>p.Section).FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public Task<List<Product>> GetProductsBySection(Guid id)
