@@ -4,7 +4,7 @@ namespace Pizzeria.Application.Interfaces.Persistence;
 
 public interface IOrderRepository
 {
-    Task<Order> GetOrderById(int id);
-    Task<List<Order>> GetAllOrders(int id);
+    Task<Order> GetOrderById(Guid id);
+    Task<List<Order>> GetAllOrders(Guid id);
 }
 

@@ -4,8 +4,8 @@ namespace Pizzeria.Application.Interfaces.Persistence;
 
 public interface IProductRepository
 {
-    Task<Product> GetProductById(int id);
-    Task<Product> GetProductsBySection(int id);
+    Task<Product> GetProductById(Guid id);
+    Task<List<Product>> GetProductsBySection(Guid id);
     Task<List<Product>> GetAllProducts();
 }
 
