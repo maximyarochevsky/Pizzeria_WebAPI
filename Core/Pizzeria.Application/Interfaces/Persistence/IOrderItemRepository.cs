@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Pizzeria.Domain.Entities;
+﻿using Pizzeria.Domain.Entities;
 
-namespace Pizzeria.Application.Interfaces.Persistence
+namespace Pizzeria.Application.Interfaces.Persistence;
+
+public interface IOrderItemRepository
 {
-    public interface IOrderItemRepository
-    {
-        Task<List<OrderItem>> GetAllOrderItemsByOrderId();
-    }
+    Task<List<OrderItem>> GetAllOrderItemsByOrderId();
 }
+
