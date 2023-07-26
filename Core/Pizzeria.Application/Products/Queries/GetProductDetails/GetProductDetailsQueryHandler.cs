@@ -8,17 +8,17 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Pizzeria.Application.Interfaces;
 using Pizzeria.Application.Interfaces.Persistence;
+using Pizzeria.Application.Products.Queries.ViewModels;
 
 namespace Pizzeria.Application.Products.Queries.GetProductDetails
 {
     public class GetProductDetailsQueryHandler : IRequestHandler<GetProductDetailsQuery, ProductDetailsVm>
     {
-        private readonly IPizzeriaDbContext _dbContext;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
         public GetProductDetailsQueryHandler(IPizzeriaDbContext dbContext, IMapper mapper, IUnitOfWork unitOfWork)
-         =>(_dbContext, _mapper, _unitOfWork) = (dbContext,mapper, unitOfWork);
+         =>(_mapper, _unitOfWork) = (mapper, unitOfWork);
            
         public async Task<ProductDetailsVm> Handle(GetProductDetailsQuery request, CancellationToken token)
         {

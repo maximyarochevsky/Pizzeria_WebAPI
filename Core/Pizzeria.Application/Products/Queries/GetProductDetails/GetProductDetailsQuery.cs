@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Pizzeria.Application.Products.Queries.ViewModels;
 
 namespace Pizzeria.Application.Products.Queries.GetProductDetails;
 

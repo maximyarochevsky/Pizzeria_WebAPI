@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Pizzeria.Application.Products.Queries.GetAllProducts;
+using Pizzeria.Application.Products.Queries.GetProductBySection;
 using Pizzeria.Application.Products.Queries.GetProductDetails;
+using Pizzeria.Application.Products.Queries.ViewModels;
 
 namespace Pizzeria_WebAPI.Controllers;
 
@@ -29,5 +32,30 @@ public class ProductController : ControllerBase
 
         return Ok(vm);
     }
+
+    [HttpGet("{all}")]
+    public async Task<ActionResult<ListProductsVm>> GetAllProducts()
+    {
+        var query = new GetAllProductsQuery();
+
+        var vm = await _mediator.Send(query);
+
+        return Ok(vm);
+    }
+
+    [HttpGet("{bySection}")]
+
+    public async Task<ActionResult<ListProductsVm>> GetProductsBySection(Guid sectionId)
+    {
+        var query = new GetProductBySectionQuery()
+        {
+            SectionId = sectionId,
+        };
+
+        var vm = await _mediator.Send(query);
+
+        return Ok(vm);
+    }
+
 }
 
