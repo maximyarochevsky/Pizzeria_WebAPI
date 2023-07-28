@@ -13,7 +13,7 @@ var services = builder.Services;
 services.AddControllers();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
-
+services.AddSession();
 services.AddApplication().AddInfrastructure(builder.Configuration);
 
 services.AddControllers();
@@ -48,6 +48,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseSession();
 
 app.UseAuthorization();
 
