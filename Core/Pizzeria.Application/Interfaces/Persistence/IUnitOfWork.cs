@@ -6,6 +6,7 @@ public interface IUnitOfWork
     IOrderRepository Orders { get; }
     IProductRepository Products { get; }
     ISectionRepository Sections { get; }
+    ICartRepository Cart { get; }
 
     Task<bool> CompleteAsync();
 }
