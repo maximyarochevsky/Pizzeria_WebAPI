@@ -1,31 +1,32 @@
-﻿//using MediatR;
-//using Pizzeria.Application.Interfaces;
+﻿using AutoMapper;
+using MediatR;
+//using Pizzeria.Application.Interfaces.Persistence;
 //using Pizzeria.Domain.Entities;
 
 //namespace Pizzeria.Application.Orders.Commands.CreateOrder;
 
-//public class CreateOrderCommandHandler : 
-//    IRequestHandler<CreateOrderCommand, Guid>
+//public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Guid>
 //{
-//    private readonly IPizzeriaDbContext _dbContext;
+//    private readonly IMapper _mapper;
+//    private readonly IUnitOfWork _unitOfWork;
 
-//    public CreateOrderCommandHandler(IPizzeriaDbContext dbContext) =>
-//        _dbContext = dbContext;
-    
-//        public async Task<Guid> Handle(CreateOrderCommand request,
-//        CancellationToken cancellationToken)
+//    public Task<Guid> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
+//    {
+//        var orderItems = request
+//            .Products
+//            .Select(p => new OrderItem()
 //        {
-//            var order = new Order
-//            {
-//                Address = request.Address,
-//                Description = request.Description,
-//                Phone = request.Phone,
-//                Items = null,
-//                Id = Guid.NewGuid(),
-//                Date = DateTime.Now,
-//            };
+//                Price = p.Price,
+//                Quantity = 
+//        }).ToList();
+//        var order = new Order
+//        {
+//            Description = request.Description,
+//            Address = request.Address,
+//            Phone = request.Phone,
+//            Date = DateTimeOffset.Now,
 
-//        return order.Id;
+//        }
 //    }
 //}
 

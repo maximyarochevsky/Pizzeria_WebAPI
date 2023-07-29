@@ -6,6 +6,5 @@ namespace Pizzeria.Application.Products.Queries.GetAllProducts;
 
 public class GetAllProductsQuery : IRequest<ListProductsVm>
 {
-    public Guid Id { get; set; }
 }
 
