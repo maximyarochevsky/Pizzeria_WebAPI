@@ -23,7 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Exceptions\" />
+    <Folder Include="Cart\Queries\" />
+    <Folder Include="Orders\Queries\" />
   </ItemGroup>
 
 </Project>
