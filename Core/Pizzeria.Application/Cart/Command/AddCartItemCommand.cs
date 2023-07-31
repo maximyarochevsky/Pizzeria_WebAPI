@@ -5,6 +5,6 @@ namespace Pizzeria.Application.Cart.Command;
 
 public class AddCartItemCommand:IRequest<CartItem>
 {
-    public Product Product { get; set; }
+    public Guid ProductId { get; set; }
     public int Quantity { get; set; }
 }

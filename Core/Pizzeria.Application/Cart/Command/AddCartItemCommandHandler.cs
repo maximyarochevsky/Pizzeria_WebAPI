@@ -15,11 +15,11 @@ public class AddCartItemCommandHandler : IRequestHandler<AddCartItemCommand, Car
     {
         var cartItem = new CartItem()
         {
-            ProductId = request.Product.Id,
+            ProductId = request.ProductId,
             Quantity = request.Quantity,
         };
 
-        _unitOfWork.Cart.AddCartItem(cartItem);
+        bool result = _unitOfWork.Cart.AddCartItem(cartItem);
 
         return cartItem;
     }
