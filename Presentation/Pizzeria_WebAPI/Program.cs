@@ -35,6 +35,9 @@ services.AddCors(options =>
     });
 });
 
+services.AddDistributedMemoryCache();
+services.AddHttpContextAccessor();
+
 var app = builder.Build();
 
 await using (var scope = app.Services.CreateAsyncScope())
