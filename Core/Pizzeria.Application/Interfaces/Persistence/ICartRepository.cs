@@ -4,7 +4,7 @@ namespace Pizzeria.Application.Interfaces.Persistence;
 
 public interface ICartRepository
 {
-    Task<bool> AddCartItem(CartItem cartItem);
+    bool AddCartItem(CartItem cartItem);
     bool IncrementCartItem();
     bool RemoveCartItem();
     bool DecrementCartItem();
