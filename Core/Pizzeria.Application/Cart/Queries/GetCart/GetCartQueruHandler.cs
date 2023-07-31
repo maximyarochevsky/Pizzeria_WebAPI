@@ -1,11 +1,10 @@
 ﻿using MediatR;
 using Pizzeria.Application.Interfaces.Persistence;
-using Pizzeria.Domain.Entities;
 
 
 namespace Pizzeria.Application.Cart.Queries.GetCart;
 
-public class GetCartQueryHandler : IRequestHandler<GetCartQuery, List<CartItem>>
+public class GetCartQueryHandler : IRequestHandler<GetCartQuery, Domain.Entities.Cart>
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -13,13 +12,13 @@ public class GetCartQueryHandler : IRequestHandler<GetCartQuery, List<CartItem>>
     {
         _unitOfWork = unitOfWork;
     }
-    public async Task<List<CartItem>> Handle(GetCartQuery request, CancellationToken cancellationToken)
+    public async Task<Domain.Entities.Cart> Handle(GetCartQuery request, CancellationToken cancellationToken)
     {
-        var list = await _unitOfWork.Cart.GetCart();
+        var cart = await _unitOfWork.Cart.GetCart();
 
-        if (list == null)
+        if (cart == null)
             throw new ArgumentNullException("list");
 
-        return list;
+        return cart;
     }
 }
