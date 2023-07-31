@@ -19,7 +19,7 @@ public class ProductController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("byId/{id}")]
     public async Task<ActionResult<ProductDetailsVm>> GetProductDetails(Guid id)
     {
         var query = new GetProductDetailsQuery
@@ -31,7 +31,7 @@ public class ProductController : ControllerBase
         return Ok(vm);
     }
 
-    [HttpGet("{all}")]
+    [HttpGet("all")]
     public async Task<ActionResult<ListProductsVm>> GetAllProducts()
     {
         var query = new GetAllProductsQuery();
@@ -41,7 +41,7 @@ public class ProductController : ControllerBase
         return Ok(vm);
     }
 
-    [HttpGet("{bySection}")]
+    [HttpGet("bySection/{sectionId}")]
 
     public async Task<ActionResult<ListProductsVm>> GetProductsBySection(Guid sectionId)
     {

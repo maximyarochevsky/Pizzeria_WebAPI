@@ -2,7 +2,7 @@
 using Pizzeria.Application.Interfaces.Persistence;
 using Pizzeria.Domain.Entities;
 
-namespace Pizzeria.Application.Cart.Command;
+namespace Pizzeria.Application.Cart.Command.AddCartItem;
 
 public class AddCartItemCommandHandler : IRequestHandler<AddCartItemCommand, CartItem>
 {
@@ -17,6 +17,11 @@ public class AddCartItemCommandHandler : IRequestHandler<AddCartItemCommand, Car
         {
             ProductId = request.ProductId,
             Quantity = request.Quantity,
+            Price = request.Quantity * _unitOfWork
+            .Products
+            .GetProductById(request.ProductId)
+            .Result
+            .Price,
         };
 
         bool result = _unitOfWork.Cart.AddCartItem(cartItem);

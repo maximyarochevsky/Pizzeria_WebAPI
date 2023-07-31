@@ -17,17 +17,20 @@ namespace Pizzeria.Infrastructure.Persistence.Repositories
         public IOrderRepository Orders { get; }
         public IProductRepository Products { get; }
         public ISectionRepository Sections { get; }
+        public ICartRepository Cart { get; }
 
         public UnitOfWork(PizzeriaDbContext dbContext
         ,IOrderRepository orders
         ,IOrderItemRepository orderItems
         ,IProductRepository products
+        ,ICartRepository cart
         ,ISectionRepository sections)
         {
                 _dbContext = dbContext;
                 Orders = orders; 
                 OrderItems = orderItems;
                 Products = products;
+                Cart = cart;
                 Sections = sections;
         }
 

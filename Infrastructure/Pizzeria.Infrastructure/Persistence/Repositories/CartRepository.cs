@@ -3,17 +3,29 @@ using Pizzeria.Application.Interfaces.Persistence;
 using Pizzeria.Domain.Entities;
 using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Text.Json;
 
 namespace Pizzeria.Infrastructure.Persistence.Repositories;
 
 public class CartRepository :  ICartRepository
 {
-
-    private ISession session;
-    public Task<bool> AddCartItem(CartItem cartItem)
+    private readonly IServiceProvider _services;
+    public CartRepository(IServiceProvider services)
     {
-        if(session.TryGetValue())
-        session.Set("Cart", cart);
+        _services = services;
+    }
+    
+    public bool AddCartItem(CartItem cartItem)
+    {
+        ISession _session = _services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+
+        if(_session.GetString(cartItem.ProductId.ToString()) != cartItem.ProductId.ToString())
+        {
+            _session.SetString(cartItem.ProductId.ToString(), JsonSerializer.Serialize<CartItem>(cartItem));
+            return true;
+        }
+        return false;
     }
 
     public bool ClearCart()
@@ -26,9 +38,16 @@ public class CartRepository :  ICartRepository
         throw new NotImplementedException();
     }
 
-    public Task<List<CartItem>> GetCart()
+    public async Task<List<CartItem>> GetCart()
     {
-        throw new NotImplementedException();
+        ISession _session = _services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+        List<CartItem> list = new List<CartItem>();
+        foreach(var key in _session.Keys)
+        {
+            list.Add(JsonSerializer.Deserialize<CartItem>(_session.GetString(key)));
+        }
+
+        return list;
     }
 
     public bool IncrementCartItem()
