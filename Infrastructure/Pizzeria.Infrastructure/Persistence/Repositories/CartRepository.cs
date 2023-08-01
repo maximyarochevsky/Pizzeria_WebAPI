@@ -47,6 +47,32 @@ public class CartRepository :  ICartRepository
         return false;
     }
 
+    public bool DecrementCartItem(Guid Id)
+    {
+        ISession _session = _services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+
+        if (_session.GetString(Id.ToString()) != null)
+        {
+            var item = JsonSerializer.Deserialize<CartItem>(_session.GetString(Id.ToString()));
+            decimal price = item.Price / item.Quantity;
+            item.Quantity--;
+
+            if (item.Quantity == 0 || item.Quantity < 0)
+            {
+                _session.Remove(Id.ToString());
+            }
+            else
+            {
+                item.Price = item.Quantity * price;
+                _session.SetString(Id.ToString(), JsonSerializer.Serialize<CartItem>(item));
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
    
 }
 
