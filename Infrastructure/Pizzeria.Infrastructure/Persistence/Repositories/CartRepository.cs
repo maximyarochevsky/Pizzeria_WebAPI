@@ -106,7 +106,18 @@ public class CartRepository :  ICartRepository
         return false;
     }
 
-  
+    public bool ClearCart()
+    {
+        ISession _session = _services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+
+        _session.Clear();
+
+        if(_session.Keys.Count() > 0 )
+            return false;
+
+        return true;
+    }
+
 
 }
 
