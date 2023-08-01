@@ -94,5 +94,19 @@ public class CartRepository :  ICartRepository
         return cart;
     }
 
+    public bool RemoveCartItem(Guid Id)
+    {
+        ISession _session = _services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+
+        _session.Remove(Id.ToString());
+
+        if(_session.GetString(Id.ToString()) == null)
+            return true;
+
+        return false;
+    }
+
+  
+
 }
 
