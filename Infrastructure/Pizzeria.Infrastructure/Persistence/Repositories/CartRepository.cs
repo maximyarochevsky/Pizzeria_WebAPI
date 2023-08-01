@@ -73,6 +73,26 @@ public class CartRepository :  ICartRepository
         return false;
     }
 
-   
+    public async Task<Cart> GetCart()
+    {
+
+        ISession _session = _services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+        List<CartItem> list = new List<CartItem>();
+        decimal totalPrice = 0;
+        foreach(var key in _session.Keys)
+        {
+            list.Add(JsonSerializer.Deserialize<CartItem>(_session.GetString(key)));
+            totalPrice += JsonSerializer.Deserialize<CartItem>(_session.GetString(key)).Price;
+        }
+
+        Cart cart = new Cart()
+        {
+            Items = list,
+            TotalPrice = totalPrice,
+        };
+
+        return cart;
+    }
+
 }
 
