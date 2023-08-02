@@ -8,7 +8,7 @@ using Pizzeria.Application.Sections.Queries.ViewModels;
 
 namespace Pizzeria.Application.Sections.Queries.GetSectionById;
 
-public class GetSectionByIdQueryHandler : IRequestHandler<GetSectionByIdQuery, ErrorOr<ListSectionsVm>>
+public class GetSectionByIdQueryHandler : IRequestHandler<GetSectionByIdQuery, ErrorOr<SectionVm>>
 {
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
@@ -16,7 +16,7 @@ public class GetSectionByIdQueryHandler : IRequestHandler<GetSectionByIdQuery, E
     public GetSectionByIdQueryHandler(IPizzeriaDbContext dbContext, IMapper mapper, IUnitOfWork unitOfWork)
         => (_mapper, _unitOfWork) = (mapper, unitOfWork);
 
-    public async Task<ErrorOr<ListSectionsVm>> Handle(GetSectionByIdQuery request, CancellationToken cancellationToken)
+    public async Task<ErrorOr<SectionVm>> Handle(GetSectionByIdQuery request, CancellationToken cancellationToken)
     {
         if (!Guid.TryParse(request.Id.ToString(), out _))
             return Errors.Section.InvalidId;
@@ -26,7 +26,7 @@ public class GetSectionByIdQueryHandler : IRequestHandler<GetSectionByIdQuery, E
         if (section == null)
             return Errors.Section.NotFound;
 
-        return _mapper.Map<ListSectionsVm>(section);
+        return _mapper.Map<SectionVm>(section);
     }
     
     
