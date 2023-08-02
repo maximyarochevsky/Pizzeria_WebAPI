@@ -9,12 +9,12 @@ public class SectionMappingConfig : IMapWith<SectionVm>
 {
     public void Mapping(Profile profile)
     {
-        profile.CreateMap<SectionVm, GetSectionById>()
+        profile.CreateMap<SectionVm, GetSectionByIdResponse>()
             .ForMember(sectionVm => sectionVm.Name,
                 opt => opt.MapFrom(section => section.Name));
 
-      
-        profile.CreateMap<ListSectionsVm, GetSectionList>()
+
+        profile.CreateMap<ListSectionsVm, GetSectionListResponse>()
             .ForMember(sectionsResponse => sectionsResponse.Sections,
                 opt => opt.MapFrom(sectionsVm => sectionsVm.ListSections));
     }
