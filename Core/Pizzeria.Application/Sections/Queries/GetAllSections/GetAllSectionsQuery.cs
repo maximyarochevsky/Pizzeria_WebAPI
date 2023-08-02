@@ -1,9 +1,10 @@
-﻿using MediatR;
+﻿using ErrorOr;
+using MediatR;
 using Pizzeria.Application.Sections.Queries.ViewModels;
 
 namespace Pizzeria.Application.Sections.Queries.GetAllSections;
 
-public class GetAllSectionsQuery: IRequest<ListSectionsVm>
+public class GetAllSectionsQuery: IRequest<ErrorOr<ListSectionsVm>>
 {
 
 }

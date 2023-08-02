@@ -1,9 +1,10 @@
-﻿using MediatR;
+﻿using ErrorOr;
+using MediatR;
 using Pizzeria.Application.Sections.Queries.ViewModels;
 
 namespace Pizzeria.Application.Sections.Queries.GetSectionById;
 
-public class GetSectionByIdQuery: IRequest<SectionVm>
+public class GetSectionByIdQuery: IRequest<ErrorOr<SectionVm>>
 {
     public Guid Id { get; set; }
 }

@@ -5,9 +5,9 @@ namespace Pizzeria.Application.Interfaces.Persistence;
 public interface ICartRepository
 {
     bool AddCartItem(CartItem cartItem);
-    bool IncrementCartItem();
-    bool RemoveCartItem();
-    bool DecrementCartItem();
+    bool IncrementCartItem(Guid Id);
+    bool RemoveCartItem(Guid Id);
+    bool DecrementCartItem(Guid Id);
     bool ClearCart();
-    Task<List<CartItem>> GetCart();
+    Task<Domain.Entities.Cart> GetCart();
 }
