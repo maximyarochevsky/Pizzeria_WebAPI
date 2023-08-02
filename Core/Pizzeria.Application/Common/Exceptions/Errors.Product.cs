@@ -8,7 +8,7 @@ public static partial class Errors
     {
         public static Error InvalidId => Error.Validation(
             code: "Product.InvalidId",
-            description: "Id товара не найден.");
+            description: "Id товара неверен.");
 
         public static Error NotFound => Error.NotFound(
             code: "Product.NotFound",
