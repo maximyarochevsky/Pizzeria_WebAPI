@@ -24,7 +24,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet("byId/{id}")]
-    public async Task<ActionResult<ErrorOr<ProductDetailsVm>>> GetProductDetails(Guid id)
+    public async Task<IActionResult> GetProductDetails(Guid id)
     {
         var query = new GetProductDetailsQuery
         {
@@ -38,7 +38,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet("all")]
-    public async Task<ActionResult<ErrorOr<ListProductsVm>>> GetAllProducts()
+    public async Task<IActionResult> GetAllProducts()
     {
         var query = new GetAllProductsQuery();
 
@@ -51,7 +51,7 @@ public class ProductController : ControllerBase
 
     [HttpGet("bySection/{sectionId}")]
 
-    public async Task<ActionResult<ErrorOr<ListProductsVm>>> GetProductsBySection(Guid sectionId)
+    public async Task<IActionResult> GetProductsBySection(Guid sectionId)
     {
         var query = new GetProductBySectionQuery()
         {
