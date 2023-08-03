@@ -23,7 +23,7 @@ public class SectionController: ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<ErrorOr<SectionVm>>> GetSectionById(Guid id)
+    public async Task<IActionResult> GetSectionById(Guid id)
     {
         var query = new GetSectionByIdQuery()
         {
@@ -38,7 +38,7 @@ public class SectionController: ControllerBase
     }
 
     [HttpGet("all")]
-    public async Task<ActionResult<ErrorOr<ListSectionsVm>>> GetAllSections()
+    public async Task<IActionResult> GetAllSections()
     {
         var query = new GetAllSectionsQuery();
 

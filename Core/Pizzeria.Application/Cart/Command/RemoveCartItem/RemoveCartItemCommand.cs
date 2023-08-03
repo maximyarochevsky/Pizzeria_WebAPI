@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using ErrorOr;
+using MediatR;
 
 namespace Pizzeria.Application.Cart.Command.RemoveCartItem;
 
-public class RemoveCartItemCommand : IRequest<bool>
+public class RemoveCartItemCommand : IRequest<ErrorOr<bool>>
 {
     public Guid ProductId { get; set; }
 }
