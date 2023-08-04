@@ -12,7 +12,7 @@ using Pizzeria.Infrastructure.Persistence;
 namespace Pizzeria.Infrastructure.Migrations
 {
     [DbContext(typeof(PizzeriaDbContext))]
-    [Migration("20230720104124_Initial")]
+    [Migration("20230804092209_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -35,7 +35,7 @@ namespace Pizzeria.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTimeOffset>("Date")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
@@ -128,7 +128,7 @@ namespace Pizzeria.Infrastructure.Migrations
             modelBuilder.Entity("Pizzeria.Domain.Entities.OrderItem", b =>
                 {
                     b.HasOne("Pizzeria.Domain.Entities.Order", "Order")
-                        .WithMany("Items")
+                        .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -157,7 +157,7 @@ namespace Pizzeria.Infrastructure.Migrations
 
             modelBuilder.Entity("Pizzeria.Domain.Entities.Order", b =>
                 {
-                    b.Navigation("Items");
+                    b.Navigation("OrderItems");
                 });
 #pragma warning restore 612, 618
         }

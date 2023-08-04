@@ -1,4 +1,6 @@
-﻿using Pizzeria.Application.Interfaces.Persistence;
+﻿using Microsoft.EntityFrameworkCore;
+using Pizzeria.Application.Interfaces.Persistence;
+using Pizzeria.Application.Orders.Queries.ViewModels;
 using Pizzeria.Domain.Entities;
 
 namespace Pizzeria.Infrastructure.Persistence.Repositories;
@@ -9,14 +11,14 @@ public class OrderRepository : GenericRepository<Order>, IOrderRepository
     {
     }
 
-    public Task<List<Order>> GetAllOrders(Guid id)
+    public Task<List<Order>> GetAllOrders()
     {
-        throw new NotImplementedException();
+        return _dbContext.Orders.Include(o => o.OrderItems).ToListAsync();
     }
 
     public Task<Order> GetOrderById(Guid id)
     {
-        throw new NotImplementedException();
+        return _dbContext.Orders.Include(o => o.OrderItems).FirstOrDefaultAsync(o => o.Id == id);
     }
 }
 

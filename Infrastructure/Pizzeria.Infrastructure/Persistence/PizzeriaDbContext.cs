@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using Pizzeria.Application.Interfaces;
 using Pizzeria.Domain.Entities;
 using Pizzeria.Infrastructure.Persistence.Configurations;
@@ -14,7 +15,6 @@ public class PizzeriaDbContext : DbContext, IPizzeriaDbContext
 
     public PizzeriaDbContext(DbContextOptions<PizzeriaDbContext> options)
         : base(options) { }
-
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
