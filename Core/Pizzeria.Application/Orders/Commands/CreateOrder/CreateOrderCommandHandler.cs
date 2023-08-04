@@ -39,7 +39,7 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Err
             Address = request.Address,
             Phone = request.Phone,
             Date = DateTime.UtcNow,
-            Items = orderItemsList,
+            OrderItems = orderItemsList,
             TotalPrice = cart.TotalPrice,
         };
 
