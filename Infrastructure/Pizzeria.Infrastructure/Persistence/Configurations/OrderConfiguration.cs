@@ -17,7 +17,8 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
         builder.Property(order => order.Address);
         builder.Property(order => order.Date);
         builder.Property(order => order.Phone);
-        builder.Property(order => order.Id);
-        builder.HasMany(order => order.Items);
+        builder.HasMany(order => order.OrderItems)
+              .WithOne(item => item.Order)  
+              .HasForeignKey(item => item.OrderId);
     }
 }
