@@ -44,7 +44,7 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Err
         };
 
         var result =  await _unitOfWork.Orders.Add(order);
-        _unitOfWork.CompleteAsync();
+        await _unitOfWork.CompleteAsync();
 
         _unitOfWork.Cart.ClearCart();
 
