@@ -10,6 +10,8 @@ using Pizzeria.Application.Orders.Queries.GetAllOrders;
 using AutoMapper;
 using Pizzeria.Contracts.Order.Get;
 using Pizzeria.Application.Orders.Queries.ViewModels;
+using Pizzeria.Contracts.Product.Get;
+using Pizzeria.Application.Orders.Queries.GetOrderById;
 
 namespace Pizzeria_WebAPI.Controllers
 {
@@ -51,7 +53,22 @@ namespace Pizzeria_WebAPI.Controllers
             var vm = await _mediator.Send(query);
 
             return vm.Match(
-                vmResponse => Ok(vmResponse),
+                vm => Ok(_mapper.Map<GetAllOrdersResponse>(vm)),
+                errors => Problem("Ошибка"));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetOrderById(Guid id)
+        {
+            var query = new GetOrderByIdQuery()
+            {
+                Id = id,
+            };
+
+            var vm = await _mediator.Send(query);
+
+            return vm.Match(
+                vm => Ok(_mapper.Map<GetOrderResponse>(vm)),
                 errors => Problem("Ошибка"));
         }
     }
