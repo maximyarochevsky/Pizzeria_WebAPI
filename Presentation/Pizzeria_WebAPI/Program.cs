@@ -10,52 +10,58 @@ using Pizzeria.Application.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 
-services.AddControllers();
-services.AddEndpointsApiExplorer();
-services.AddSwaggerGen();
-services.AddSession();
-services.AddApplication().AddInfrastructure(builder.Configuration);
-
-services.AddControllers();
-
-
-services.AddAutoMapper(config =>
 {
-    config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
-    config.AddProfile(new AssemblyMappingProfile(typeof(IPizzeriaDbContext).Assembly));
-});
+    services.AddControllers();
+    services.AddEndpointsApiExplorer();
+    services.AddSwaggerGen();
+    services.AddSession();
+    services.AddApplication().AddInfrastructure(builder.Configuration);
 
-services.AddCors(options =>
-{
-    options.AddPolicy("AllowAllHeaders", builder =>
+    services.AddControllers();
+
+
+    services.AddAutoMapper(config =>
     {
-        builder.AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
+        config.AddProfile(new AssemblyMappingProfile(Assembly.GetExecutingAssembly()));
+        config.AddProfile(new AssemblyMappingProfile(typeof(IPizzeriaDbContext).Assembly));
     });
-});
 
-services.AddDistributedMemoryCache();
-services.AddHttpContextAccessor();
+    services.AddCors(options =>
+    {
+        options.AddPolicy("AllowAllHeaders", builder =>
+        {
+            builder.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+    });
+
+    services.AddDistributedMemoryCache();
+    services.AddHttpContextAccessor();
+
+}
 
 var app = builder.Build();
 
-await using (var scope = app.Services.CreateAsyncScope())
 {
-    var db_initializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
-    await db_initializer.InitializeAsync(RemoveBefore: true).ConfigureAwait(true);
+    await using (var scope = app.Services.CreateAsyncScope())
+    {
+        var db_initializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        await db_initializer.InitializeAsync(RemoveBefore: true).ConfigureAwait(true);
+    }
+
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    app.UseSession();
+
+    app.UseAuthorization();
+
+    app.MapControllers();
+
+    app.Run();
+
 }
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseSession();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
