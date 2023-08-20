@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.Infrastructure", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria_WebAPI", "Presentation\Pizzeria_WebAPI\Pizzeria_WebAPI.csproj", "{8F508450-EE8E-404C-9694-5D7B86FBAFB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzeria.Contracts", "Pizzeria.Contracts\Pizzeria.Contracts.csproj", "{FA61AA6C-7BFF-4A45-9772-C3CF96A821BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8F508450-EE8E-404C-9694-5D7B86FBAFB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F508450-EE8E-404C-9694-5D7B86FBAFB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F508450-EE8E-404C-9694-5D7B86FBAFB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA61AA6C-7BFF-4A45-9772-C3CF96A821BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA61AA6C-7BFF-4A45-9772-C3CF96A821BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA61AA6C-7BFF-4A45-9772-C3CF96A821BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA61AA6C-7BFF-4A45-9772-C3CF96A821BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{10A1A58F-31DB-4DD9-8EE3-7FE7B851C6B4} = {BB3A2916-8BF1-4833-A5AF-4B726BF71388}
 		{BDCA4D02-A0EE-4B34-BE38-6D7AF18D8235} = {BB69639B-252A-40A0-9FF3-3E195BF68C09}
 		{8F508450-EE8E-404C-9694-5D7B86FBAFB2} = {ABB454DA-A35A-4C65-866D-743820F4F6AE}
+		{FA61AA6C-7BFF-4A45-9772-C3CF96A821BA} = {ABB454DA-A35A-4C65-866D-743820F4F6AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75A69B72-4368-4B43-9BD8-1FA8252B8F85}
