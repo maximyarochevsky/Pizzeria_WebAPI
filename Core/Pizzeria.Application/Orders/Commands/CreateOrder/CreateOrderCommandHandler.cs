@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ErrorOr;
 using MediatR;
+using Pizzeria.Application.Common.Exceptions;
 using Pizzeria.Application.Interfaces.Persistence;
 using Pizzeria.Domain.Entities;
 
@@ -33,12 +34,17 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Err
 
         var orderItemsList = orderItems.ToList();
 
+        if (orderItemsList.Count < 1)
+        {
+            return Errors.Order.NullItems;
+        }
+
         var order = new Order
         {
             Description = request.Description,
             Address = request.Address,
             Phone = request.Phone,
-            Date = DateTime.UtcNow,
+            Date = DateTime.UtcNow.AddHours(3),
             OrderItems = orderItemsList,
             TotalPrice = cart.TotalPrice,
         };

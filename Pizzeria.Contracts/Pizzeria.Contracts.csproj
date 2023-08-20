@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Pizzeria.Application\Pizzeria.Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\Pizzeria.Infrastructure\Pizzeria.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

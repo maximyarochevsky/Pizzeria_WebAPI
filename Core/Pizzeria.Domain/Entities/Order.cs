@@ -8,7 +8,7 @@ public class Order: Entity
     public string? Description { get; set; }
     public string Address { get; set; }
     public string Phone { get; set; }
-    public DateTimeOffset Date { get; set; } = DateTimeOffset.Now;
-    public List<OrderItem>? Items { get; set; }
+    public DateTime Date { get; set; } 
+    public List<OrderItem> OrderItems { get; set; }
 }
 

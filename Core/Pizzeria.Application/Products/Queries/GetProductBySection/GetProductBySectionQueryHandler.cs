@@ -4,6 +4,7 @@ using MediatR;
 using Pizzeria.Application.Interfaces.Persistence;
 using Pizzeria.Application.Products.Queries.ViewModels;
 using Pizzeria.Domain.Entities;
+using Pizzeria.Application.Common.Exceptions;
 
 namespace Pizzeria.Application.Products.Queries.GetProductBySection;
 
@@ -16,6 +17,11 @@ public class GetProductBySectionQueryHandler : IRequestHandler<GetProductBySecti
 
     public async Task<ErrorOr<ListProductsVm>> Handle(GetProductBySectionQuery request, CancellationToken cancellationToken)
     {
+        if (!Guid.TryParse(request.SectionId.ToString(), out Guid result))
+        {
+            return Errors.Section.InvalidId;
+        }
+
         var products = await _unitOfWork.Products.GetProductsBySection(request.SectionId);
 
         if (products == null)

@@ -4,5 +4,5 @@ namespace Pizzeria.Contracts.Order.Get;
 
 public class GetAllOrdersResponse
 {
-    public List<GetOrderResponse> Orders;
+    public List<GetOrderResponse> Orders { get; set; }
 }

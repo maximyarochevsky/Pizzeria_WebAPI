@@ -1,10 +1,11 @@
 ﻿using Pizzeria.Domain.Entities.Base;
 using Pizzeria.Domain.Entities;
 using AutoMapper;
+using Pizzeria.Application.Common.Mappings;
 
 namespace Pizzeria.Application.Orders.Queries.ViewModels;
 
-public class OrderVm
+public class OrderVm : IMapWith<Order>
 {
     public decimal TotalPrice { get; set; }
     public string? Description { get; set; }
