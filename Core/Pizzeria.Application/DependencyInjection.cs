@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Pizzeria.Application.Common.Behaviors;
 
 namespace Pizzeria.Application;
 
@@ -10,6 +12,12 @@ public static class DependencyInjection
         services)
     {
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+        services.AddValidatorsFromAssemblies(new[] { Assembly.GetExecutingAssembly() });
+
+        services.AddTransient(typeof(IPipelineBehavior<,>),
+            typeof(ValidationBehavior<,>));
+
         return services;
     }
 }
