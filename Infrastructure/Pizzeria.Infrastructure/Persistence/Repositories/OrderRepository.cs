@@ -13,12 +13,20 @@ public class OrderRepository : GenericRepository<Order>, IOrderRepository
 
     public Task<List<Order>> GetAllOrders()
     {
-        return _dbContext.Orders.Include(o => o.OrderItems).ToListAsync();
+        return _dbContext.Orders
+            .Include(o => o.OrderItems)
+            .ThenInclude(i => i.Product)
+            .ThenInclude(p => p.Section)
+            .ToListAsync();
     }
 
     public Task<Order> GetOrderById(Guid id)
     {
-        return _dbContext.Orders.Include(o => o.OrderItems).FirstOrDefaultAsync(o => o.Id == id);
+        return _dbContext.Orders
+            .Include(o => o.OrderItems)
+            .ThenInclude(i => i.Product)
+            .ThenInclude(p => p.Section)
+            .FirstOrDefaultAsync(o => o.Id == id);
     }
 }
 
