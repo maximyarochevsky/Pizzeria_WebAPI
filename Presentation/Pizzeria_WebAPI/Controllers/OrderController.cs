@@ -29,7 +29,7 @@ namespace Pizzeria_WebAPI.Controllers
         }
 
         [HttpPost("createOrder")]
-        public async Task<IActionResult> CreateOrder(string address, string phone, string description)
+        public async Task<IActionResult> CreateOrder(string address, string phone, string? description)
         {
             var command = new CreateOrderCommand()
             {
