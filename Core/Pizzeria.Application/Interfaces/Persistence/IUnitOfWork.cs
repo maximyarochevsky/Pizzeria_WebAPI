@@ -7,6 +7,7 @@ public interface IUnitOfWork
     IProductRepository Products { get; }
     ISectionRepository Sections { get; }
     ICartRepository Cart { get; }
+    IUserRepository Users { get; }
 
     Task<bool> CompleteAsync();
 }
