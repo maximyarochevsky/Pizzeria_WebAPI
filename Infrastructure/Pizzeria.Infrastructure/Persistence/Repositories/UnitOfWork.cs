@@ -19,12 +19,15 @@ namespace Pizzeria.Infrastructure.Persistence.Repositories
         public ISectionRepository Sections { get; }
         public ICartRepository Cart { get; }
 
+        public IUserRepository Users { get; }
+
         public UnitOfWork(PizzeriaDbContext dbContext
         ,IOrderRepository orders
         ,IOrderItemRepository orderItems
         ,IProductRepository products
         ,ICartRepository cart
-        ,ISectionRepository sections)
+        ,ISectionRepository sections
+        ,IUserRepository users)
         {
                 _dbContext = dbContext;
                 Orders = orders; 
@@ -32,6 +35,7 @@ namespace Pizzeria.Infrastructure.Persistence.Repositories
                 Products = products;
                 Cart = cart;
                 Sections = sections;
+                Users = users;
         }
 
         public async Task<bool> CompleteAsync()
