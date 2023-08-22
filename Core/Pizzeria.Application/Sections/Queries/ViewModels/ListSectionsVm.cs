@@ -2,8 +2,6 @@
 
 namespace Pizzeria.Application.Sections.Queries.ViewModels;
 
-public class ListSectionsVm
-{
-    public List<SectionVm> ListSections { get; set; }
-}
+public record ListSectionsVm(List<SectionVm> ListSections);
+
 

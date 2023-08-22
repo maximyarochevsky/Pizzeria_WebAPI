@@ -41,6 +41,6 @@ public class GetAllOrdersQueryHandler : IRequestHandler<GetAllOrdersQuery, Error
         }).ToList();
 
 
-        return new ListOrdersVm() { Orders = ordersVm };
+        return new ListOrdersVm(ordersVm);
     }
 }

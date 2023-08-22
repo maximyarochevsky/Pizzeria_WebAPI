@@ -16,14 +16,11 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, ErrorOr<Authenticat
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
     public LoginQueryHandler(
-        IUnitOfWork unitOfWork
-        , IMapper mapper
-        , IJwtTokenGenerator jwtTokenGenerator)
-    {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
-        _jwtTokenGenerator = jwtTokenGenerator;
-    }
+        IUnitOfWork unitOfWork,
+        IMapper mapper,
+        IJwtTokenGenerator jwtTokenGenerator) =>
+
+   (_unitOfWork, _mapper, _jwtTokenGenerator) = (unitOfWork, mapper, jwtTokenGenerator);
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery request, CancellationToken cancellationToken)
     {
@@ -40,10 +37,6 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, ErrorOr<Authenticat
         var token = _jwtTokenGenerator.GenerateToken(
             user);
 
-        return new AuthenticationResult
-        {
-            User = user,
-            Token = token,
-        };
+        return new AuthenticationResult(user, token);
     }
 }

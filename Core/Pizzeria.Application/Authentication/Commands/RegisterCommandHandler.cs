@@ -16,14 +16,12 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ErrorOr<A
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
     public RegisterCommandHandler(
-        IUnitOfWork unitOfWork
-        ,IMapper mapper
-        , IJwtTokenGenerator jwtTokenGenerator)
-    {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
-        _jwtTokenGenerator = jwtTokenGenerator;
-    }
+        IUnitOfWork unitOfWork,
+        IMapper mapper,
+        IJwtTokenGenerator jwtTokenGenerator) =>
+
+   (_unitOfWork, _mapper, _jwtTokenGenerator) = (unitOfWork, mapper, jwtTokenGenerator);
+
     public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand request, CancellationToken cancellationToken)
     {
         if (_unitOfWork.Users.GetUserByEmail(request.Email) is not null)
@@ -44,10 +42,6 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, ErrorOr<A
 
         var token = _jwtTokenGenerator.GenerateToken(user);
 
-        return new AuthenticationResult
-        {
-            User = user,
-            Token = token,
-        };
+        return new AuthenticationResult(user, token);
     }
 }

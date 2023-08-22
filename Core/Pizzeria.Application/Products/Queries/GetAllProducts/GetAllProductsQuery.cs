@@ -5,7 +5,6 @@ using Pizzeria.Domain.Entities;
 
 namespace Pizzeria.Application.Products.Queries.GetAllProducts;
 
-public class GetAllProductsQuery : IRequest<ErrorOr<ListProductsVm>>
-{
-}
+public record GetAllProductsQuery() : IRequest<ErrorOr<ListProductsVm>>;
+
 

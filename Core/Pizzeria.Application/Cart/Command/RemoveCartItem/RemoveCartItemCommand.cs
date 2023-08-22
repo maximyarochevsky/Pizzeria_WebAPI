@@ -3,7 +3,6 @@ using MediatR;
 
 namespace Pizzeria.Application.Cart.Command.RemoveCartItem;
 
-public class RemoveCartItemCommand : IRequest<ErrorOr<bool>>
-{
-    public Guid ProductId { get; set; }
-}
+public record RemoveCartItemCommand(
+    Guid ProductId) : IRequest<ErrorOr<bool>>;
+

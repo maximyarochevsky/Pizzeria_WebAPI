@@ -4,7 +4,5 @@ using Pizzeria.Application.Orders.Queries.ViewModels;
 
 namespace Pizzeria.Application.Orders.Queries.GetAllOrders;
 
-public class GetAllOrdersQuery : IRequest<ErrorOr<ListOrdersVm>>
-{
+public record GetAllOrdersQuery : IRequest<ErrorOr<ListOrdersVm>>;
 
-}
