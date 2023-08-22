@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Npgsql;
 using Pizzeria.Application.Interfaces;
 using Pizzeria.Domain.Entities;
 using Pizzeria.Infrastructure.Persistence.Configurations;

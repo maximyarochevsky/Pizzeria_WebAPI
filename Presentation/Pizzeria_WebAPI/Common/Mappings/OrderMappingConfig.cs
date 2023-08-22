@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using Pizzeria.Application.Common.Mappings;
 using Pizzeria.Application.Orders.Queries.ViewModels;
-using Pizzeria.Application.Products.Queries.ViewModels;
 using Pizzeria.Contracts.Order.Get;
-using Pizzeria.Contracts.Product.Get;
 
 namespace Pizzeria_WebAPI.Common.Mappings;
 
