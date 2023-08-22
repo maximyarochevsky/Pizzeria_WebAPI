@@ -8,10 +8,5 @@ public class OrderItemRepository : GenericRepository<OrderItem>, IOrderItemRepos
     public OrderItemRepository(PizzeriaDbContext dbContext):base(dbContext)
     {
     }
-
-    public Task<List<OrderItem>> GetAllOrderItemsByOrderId()
-    {
-        throw new NotImplementedException();
-    }
 }
 
