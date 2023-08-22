@@ -8,9 +8,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     protected readonly PizzeriaDbContext _dbContext;
 
     public GenericRepository(PizzeriaDbContext dbContext)
-    {
-            _dbContext = dbContext;
-    }
+    => _dbContext = dbContext;
 
     public async Task<bool> Add(T entity)
     {

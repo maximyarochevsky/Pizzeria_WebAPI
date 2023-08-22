@@ -14,12 +14,12 @@ public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery,Er
     private readonly IMapper _mapper;
     public GetAllProductsQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
      => (_unitOfWork, _mapper) = (unitOfWork, mapper);
+
     public async Task<ErrorOr<ListProductsVm>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
     {
         var products = await _unitOfWork.Products.GetAllProducts();
 
         if (products == null)
-
             return new ErrorOr<ListProductsVm>();
 
         var allProducts = products.Select(x => new ProductDetailsVm()
@@ -31,7 +31,7 @@ public class GetAllProductsQueryHandler : IRequestHandler<GetAllProductsQuery,Er
             Section = x.Section.Name,
         }).ToList();
 
-        return new ListProductsVm() { ListProducts = allProducts };
+        return new ListProductsVm(allProducts);
     }
 }
 

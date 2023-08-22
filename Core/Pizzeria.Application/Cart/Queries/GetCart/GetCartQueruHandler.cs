@@ -12,11 +12,9 @@ public class GetCartQueryHandler : IRequestHandler<GetCartQuery, ErrorOr<CartVm>
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public GetCartQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
-    {
-        _unitOfWork = unitOfWork;
-        _mapper = mapper;
-    }
+    public GetCartQueryHandler(IUnitOfWork unitOfWork, IMapper mapper) =>
+        (_unitOfWork, _mapper) = (unitOfWork, mapper);
+    
     public async Task<ErrorOr<CartVm>> Handle(GetCartQuery request, CancellationToken cancellationToken)
     {
         var cart = await _unitOfWork.Cart.GetCart();

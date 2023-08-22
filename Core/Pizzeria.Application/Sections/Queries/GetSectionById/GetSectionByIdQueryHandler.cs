@@ -2,7 +2,6 @@
 using ErrorOr;
 using MediatR;
 using Pizzeria.Application.Common.Exceptions;
-using Pizzeria.Application.Interfaces;
 using Pizzeria.Application.Interfaces.Persistence;
 using Pizzeria.Application.Sections.Queries.ViewModels;
 
@@ -13,7 +12,7 @@ public class GetSectionByIdQueryHandler : IRequestHandler<GetSectionByIdQuery, E
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public GetSectionByIdQueryHandler(IPizzeriaDbContext dbContext, IMapper mapper, IUnitOfWork unitOfWork)
+    public GetSectionByIdQueryHandler(IMapper mapper, IUnitOfWork unitOfWork)
         => (_mapper, _unitOfWork) = (mapper, unitOfWork);
 
     public async Task<ErrorOr<SectionVm>> Handle(GetSectionByIdQuery request, CancellationToken cancellationToken)

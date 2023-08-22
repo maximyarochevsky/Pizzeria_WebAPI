@@ -1,6 +1,4 @@
 ﻿namespace Pizzeria.Contracts.Section.Get;
 
-public class GetSectionByIdResponse
-{
-    public string Name { get; set; }
-}
+public record GetSectionByIdResponse(string Name);
+

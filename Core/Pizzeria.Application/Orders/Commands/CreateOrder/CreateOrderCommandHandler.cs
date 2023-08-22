@@ -12,14 +12,13 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Err
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public CreateOrderCommandHandler(IUnitOfWork unitOfWork)
-    {
-            _unitOfWork = unitOfWork;
-    }
+    public CreateOrderCommandHandler(IUnitOfWork unitOfWork, IMapper mapper) =>
+        (_unitOfWork, _mapper) = (unitOfWork, mapper);
 
     public async Task<ErrorOr<bool>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
     {
         Domain.Entities.Cart cart = await _unitOfWork.Cart.GetCart();
+
 
         var orderItems = await Task.WhenAll(cart.Items.Select(async item =>
         {
@@ -31,8 +30,8 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Err
                 Product = product,
             };
         }));
-
         var orderItemsList = orderItems.ToList();
+
 
         if (orderItemsList.Count < 1)
         {

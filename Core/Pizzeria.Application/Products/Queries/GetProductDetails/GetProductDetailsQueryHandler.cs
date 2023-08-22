@@ -20,23 +20,20 @@ namespace Pizzeria.Application.Products.Queries.GetProductDetails
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public GetProductDetailsQueryHandler(IPizzeriaDbContext dbContext, IMapper mapper, IUnitOfWork unitOfWork)
+        public GetProductDetailsQueryHandler(IMapper mapper, IUnitOfWork unitOfWork)
          =>(_mapper, _unitOfWork) = (mapper, unitOfWork);
            
+
         public async Task<ErrorOr<ProductDetailsVm>> Handle(GetProductDetailsQuery request, CancellationToken token)
         {
             if(!Guid.TryParse(request.Id.ToString(), out Guid result))
-            {
                 return Errors.Product.InvalidId;
-            }
 
             var entity = await _unitOfWork.Products.GetProductById(request.Id);
 
             if (entity is null)
-            {
                 return Errors.Product.NotFound;
-            }
-
+            
             return _mapper.Map<ProductDetailsVm>(entity);
         }
     }

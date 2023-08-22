@@ -4,7 +4,6 @@ using Pizzeria.Domain.Entities;
 
 namespace Pizzeria.Application.Cart.Command.IncrementCartItem;
 
-public class IncrementCartItemCommand : IRequest<ErrorOr<bool>>
-{
-    public Guid ProductId { get; set; }
-}
+public record IncrementCartItemCommand(
+   Guid ProductId) : IRequest<ErrorOr<bool>>;
+

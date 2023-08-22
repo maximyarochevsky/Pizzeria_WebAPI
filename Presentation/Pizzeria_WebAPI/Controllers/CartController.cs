@@ -2,92 +2,75 @@
 using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Pizzeria.Application.Cart.Command;
 using Pizzeria.Application.Cart.Command.AddCartItem;
 using Pizzeria.Application.Cart.Command.ClearCart;
 using Pizzeria.Application.Cart.Command.DecrementCartItem;
 using Pizzeria.Application.Cart.Command.IncrementCartItem;
 using Pizzeria.Application.Cart.Command.RemoveCartItem;
 using Pizzeria.Application.Cart.Queries.GetCart;
-using ErrorOr;
 using Pizzeria.Contracts.Cart.Get;
-
-using Pizzeria.Domain.Entities;
-using System.Security.Cryptography;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Pizzeria_WebAPI.Controllers
 {
+
     [ApiController]
+    [Authorize]
     [Route("api/[controller]/[action]")]
-    public class CartController:ControllerBase
+    public class CartController: ControllerBase
     {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
         public CartController(IMediator mediator, IMapper mapper)
-        {
-            _mediator = mediator;
-            _mapper = mapper;
-        }
+        => (_mediator, _mapper) = (mediator, mapper);
+
 
         [HttpPost("{id}")]
         public async Task<IActionResult> AddCartItem(Guid id, int quantity)
         {
-            var command = new AddCartItemCommand
-            {
-                ProductId = id,
-                Quantity = quantity,
-            };
+            var command = new AddCartItemCommand(id, quantity);
 
             var result = await _mediator.Send(command);
 
-            return result.Match(
+            return result.MatchFirst(
                 cartItem => Ok(result.Value),
-                errors => Problem("Ошибка"));
+                error => Problem(title: error.Description));
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> IncrementCartItem(Guid id)
         {
-            var command = new IncrementCartItemCommand()
-            {
-                ProductId = id,
-            };
+            var command = new IncrementCartItemCommand(id);
 
             var result = await _mediator.Send(command);
 
-            return result.Match(
+            return result.MatchFirst(
                 cartItem => Ok(result.Value),
-                errors => Problem("Ошибка"));
+                error => Problem(title: error.Description));
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> DecrementCartItem(Guid id)
         {
-            var command = new DecrementCartItemCommand()
-            {
-                ProductId = id,
-            };
+            var command = new DecrementCartItemCommand(id);
 
             var result = await _mediator.Send(command);
 
-            return result.Match(
+            return result.MatchFirst(
                 cartItem => Ok(result.Value),
-                errors => Problem("Ошибка"));
+                error => Problem(title: error.Description));
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveCartItem(Guid id)
         {
-            var command = new RemoveCartItemCommand()
-            {
-                ProductId = id,
-            };
+            var command = new RemoveCartItemCommand(id);
 
             var result = await _mediator.Send(command);
 
-            return result.Match(
+            return result.MatchFirst(
                 cartItem => Ok(result.Value),
-                errors => Problem("Ошибка"));
+                error => Problem(title: error.Description));
         }
 
 
@@ -98,9 +81,9 @@ namespace Pizzeria_WebAPI.Controllers
 
             var cart = await _mediator.Send(query);
 
-            return cart.Match(
+            return cart.MatchFirst(
                 cart => Ok(_mapper.Map<GetCartResponse>(cart)),
-                errors => Problem("Ошибка"));
+                error => Problem(title: error.Description));
         }
 
         [HttpDelete("clear")]
@@ -110,9 +93,9 @@ namespace Pizzeria_WebAPI.Controllers
 
             var result = await _mediator.Send(command);
 
-            return result.Match(
+            return result.MatchFirst(
                 cartItem => Ok(result.Value),
-                errors => Problem("Ошибка"));
+                error => Problem(title: error.Description));
         }
 
     }

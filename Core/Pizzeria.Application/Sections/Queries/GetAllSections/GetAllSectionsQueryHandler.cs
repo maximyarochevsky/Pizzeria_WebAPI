@@ -12,7 +12,7 @@ public class GetAllSectionsQueryHandler : IRequestHandler<GetAllSectionsQuery, E
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
-    public GetAllSectionsQueryHandler(IPizzeriaDbContext dbContext, IMapper mapper, IUnitOfWork unitOfWork)
+    public GetAllSectionsQueryHandler(IMapper mapper, IUnitOfWork unitOfWork)
         => (_mapper, _unitOfWork) = (mapper, unitOfWork);
 
     public async Task<ErrorOr<ListSectionsVm>> Handle(GetAllSectionsQuery request, CancellationToken cancellationToken)
@@ -27,7 +27,7 @@ public class GetAllSectionsQueryHandler : IRequestHandler<GetAllSectionsQuery, E
             Name = s.Name,
         }).ToList();
 
-        return new ListSectionsVm { ListSections = allSections };
+        return new ListSectionsVm(allSections);
     }
 }
 

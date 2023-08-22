@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.Infrastructure", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria_WebAPI", "Presentation\Pizzeria_WebAPI\Pizzeria_WebAPI.csproj", "{8F508450-EE8E-404C-9694-5D7B86FBAFB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzeria.Contracts", "Pizzeria.Contracts\Pizzeria.Contracts.csproj", "{FA61AA6C-7BFF-4A45-9772-C3CF96A821BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzeria.Contracts", "Pizzeria.Contracts\Pizzeria.Contracts.csproj", "{FA61AA6C-7BFF-4A45-9772-C3CF96A821BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

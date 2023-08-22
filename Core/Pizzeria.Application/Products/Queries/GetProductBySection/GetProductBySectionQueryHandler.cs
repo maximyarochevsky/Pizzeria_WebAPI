@@ -18,9 +18,8 @@ public class GetProductBySectionQueryHandler : IRequestHandler<GetProductBySecti
     public async Task<ErrorOr<ListProductsVm>> Handle(GetProductBySectionQuery request, CancellationToken cancellationToken)
     {
         if (!Guid.TryParse(request.SectionId.ToString(), out Guid result))
-        {
             return Errors.Section.InvalidId;
-        }
+       
 
         var products = await _unitOfWork.Products.GetProductsBySection(request.SectionId);
 
@@ -36,7 +35,7 @@ public class GetProductBySectionQueryHandler : IRequestHandler<GetProductBySecti
             Section = x.Section.Name,
         }).ToList();
 
-        return new ListProductsVm() { ListProducts = allProducts };
+        return new ListProductsVm(allProducts);
     }
 }
 
