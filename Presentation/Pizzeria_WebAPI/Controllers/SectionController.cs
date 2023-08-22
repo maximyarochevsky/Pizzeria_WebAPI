@@ -1,11 +1,8 @@
 ﻿using AutoMapper;
-using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Pizzeria.Application.Sections.Queries.GetAllSections;
 using Pizzeria.Application.Sections.Queries.GetSectionById;
-using Pizzeria.Application.Sections.Queries.ViewModels;
-using Pizzeria.Contracts.Product.Get;
 using Pizzeria.Contracts.Section.Get;
 
 namespace Pizzeria_WebAPI.Controllers;
@@ -17,24 +14,19 @@ public class SectionController: ControllerBase
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;
     public SectionController(IMediator mediator, IMapper mapper)
-    {
-        _mediator = mediator;
-        _mapper = mapper;
-    }
+    => (_mediator, _mapper) = (mediator, mapper);
+
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetSectionById(Guid id)
     {
-        var query = new GetSectionByIdQuery()
-        {
-            Id = id,
-        };
+        var query = new GetSectionByIdQuery(id);
 
         var vm = await _mediator.Send(query);
 
-        return vm.Match(
+        return vm.MatchFirst(
                 vm => Ok(_mapper.Map<GetSectionByIdResponse>(vm)),
-                errors => Problem("Ошибка"));
+                error => Problem(title: error.Description));
     }
 
     [HttpGet("all")]
@@ -44,9 +36,9 @@ public class SectionController: ControllerBase
 
         var vm = await _mediator.Send(query);
 
-        return vm.Match(
+        return vm.MatchFirst(
                 vm => Ok(_mapper.Map<GetSectionListResponse>(vm)),
-                errors => Problem("Ошибка"));
+                error => Problem(title: error.Description));
     }
 }
 

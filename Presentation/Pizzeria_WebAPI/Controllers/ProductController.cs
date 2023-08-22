@@ -1,40 +1,33 @@
 ﻿using AutoMapper;
-using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Pizzeria.Application.Products.Queries.GetAllProducts;
 using Pizzeria.Application.Products.Queries.GetProductBySection;
 using Pizzeria.Application.Products.Queries.GetProductDetails;
-using Pizzeria.Application.Products.Queries.ViewModels;
 using Pizzeria.Contracts.Product.Get;
 
 namespace Pizzeria_WebAPI.Controllers;
 
-
-[Route("api/[controller]/[action]")]
 [ApiController]
+[Route("api/[controller]/[action]")]
 public class ProductController : ControllerBase
 {
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;
     public ProductController(IMediator mediator, IMapper mapper)
-    {
-        _mediator = mediator;
-        _mapper = mapper;
-    }
+    => (_mediator, _mapper) = (mediator, mapper);
+
 
     [HttpGet("byId/{id}")]
     public async Task<IActionResult> GetProductDetails(Guid id)
     {
-        var query = new GetProductDetailsQuery
-        {
-            Id = id
-        };
+        var query = new GetProductDetailsQuery(id);
+
         var vm = await _mediator.Send(query);
 
-        return vm.Match(
+        return vm.MatchFirst(
                 vm => Ok(_mapper.Map<GetProductDetailsResponse>(vm)),
-                errors => Problem("Ошибка"));
+                error => Problem(title: error.Description));
     }
 
     [HttpGet("all")]
@@ -44,25 +37,22 @@ public class ProductController : ControllerBase
 
         var vm = await _mediator.Send(query);
 
-        return vm.Match(
+        return vm.MatchFirst(
                 vm => Ok(_mapper.Map<GetProductsListResponse>(vm)),
-                errors => Problem("Ошибка"));
+                error => Problem(title: error.Description));
     }
 
     [HttpGet("bySection/{sectionId}")]
 
     public async Task<IActionResult> GetProductsBySection(Guid sectionId)
     {
-        var query = new GetProductBySectionQuery()
-        {
-            SectionId = sectionId,
-        };
+        var query = new GetProductBySectionQuery(sectionId);
 
         var vm = await _mediator.Send(query);
 
-        return vm.Match(
+        return vm.MatchFirst(
                 vm => Ok(_mapper.Map<GetProductsListResponse>(vm)),
-                errors => Problem("Ошибка"));
+                error => Problem(title: error.Description));
     }
 
 }
