@@ -1,3 +1,6 @@
 ﻿namespace Pizzeria.Contracts.Section.Get;
 
-public record GetSectionListResponse(List<GetSectionByIdResponse> Sections);
+public class GetSectionListResponse
+{
+    public List<GetSectionByIdResponse> Sections;
+}

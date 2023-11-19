@@ -1,3 +1,6 @@
 ﻿namespace Pizzeria.Contracts.Product.Get;
 
-public record GetProductsListResponse(List<GetProductDetailsResponse> Products);
+public class GetProductsListResponse
+{
+    public List<GetProductDetailsResponse> Products { get; set; }
+}

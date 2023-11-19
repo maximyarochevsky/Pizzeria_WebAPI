@@ -2,11 +2,13 @@
 
 namespace Pizzeria.Contracts.Product.Get;
 
-public record GetProductDetailsResponse(
-    string Name,
-    string Description,
-    string Price,
-    string Section);
+public class GetProductDetailsResponse
+{
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public string Price { get; set; }
+    public string Section { get; set; }
+}
 
     
 
