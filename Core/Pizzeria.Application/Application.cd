@@ -1,2 +1,138 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Pizzeria.Application.Authentication.Commands.RegisterCommandHandler">
+    <Position X="1" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgABAAAAAAAAAAIAAAACAAAAAAA=</HashCode>
+      <FileName>Authentication\Commands\RegisterCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pizzeria.Application.Authentication.Commands.RegisterCommandValidator">
+    <Position X="2.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authentication\Commands\RegisterCommandValidator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pizzeria.Application.Authentication.Queries.LoginQueryHandler">
+    <Position X="5.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgABAAAAAAAAAAIAAAACAAAAAAA=</HashCode>
+      <FileName>Authentication\Queries\LoginQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pizzeria.Application.Cart.Command.ClearCart.ClearCartCommandHandler" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Cart\Command\ClearCart\ClearCartCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Application.Cart.Command.RemoveCartItem.RemoveCartItemCommandHandler" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Cart\Command\RemoveCartItem\RemoveCartItemCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Application.Cart.Command.DecrementCartItem.DecrementCartItemCommandHandler" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Cart\Command\DecrementCartItem\DecrementCartItemCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Application.Cart.Command.AddCartItem.AddCartItemCommandHandler" BaseTypeListCollapsed="true">
+    <Position X="8" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Cart\Command\AddCartItem\AddCartItemCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Application.Cart.Command.IncrementCartItem.IncrementCartItemCommandHandler" BaseTypeListCollapsed="true">
+    <Position X="8" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Cart\Command\IncrementCartItem\IncrementCartItemCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Application.Orders.Queries.GetOrderById.GetOrderByIdQueryHandler" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Orders\Queries\GetOrderById\GetOrderByIdQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Application.Orders.Queries.GetAllOrders.GetAllOrdersQueryHandler" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Orders\Queries\GetAllOrders\GetAllOrdersQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Application.Orders.Commands.CreateOrder.CreateOrderCommandHandler" BaseTypeListCollapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Orders\Commands\CreateOrder\CreateOrderCommandHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Application.Products.Queries.GetProductBySection.GetProductBySectionQueryHandler" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Products\Queries\GetProductBySection\GetProductBySectionQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Application.Products.Queries.GetAllProducts.GetAllProductsQueryHandler" BaseTypeListCollapsed="true">
+    <Position X="8" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Products\Queries\GetAllProducts\GetAllProductsQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Application.Products.Queries.GetProductDetails.GetProductDetailsQueryHandler" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Products\Queries\GetProductDetails\GetProductDetailsQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Application.Sections.Queries.GetSectionById.GetSectionByIdQueryHandler">
+    <Position X="2.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Sections\Queries\GetSectionById\GetSectionByIdQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pizzeria.Application.Sections.Queries.GetAllSections.GetAllSectionsQueryHandler">
+    <Position X="1" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgABAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Sections\Queries\GetAllSections\GetAllSectionsQueryHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pizzeria.Application.DependencyInjection">
+    <Position X="1" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DependencyInjection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Arial" Size="8.25" />
+</ClassDiagram>

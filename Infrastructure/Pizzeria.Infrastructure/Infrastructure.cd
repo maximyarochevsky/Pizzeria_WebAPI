@@ -1,2 +1,146 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Pizzeria.Infrastructure.Authentication.JwtSettings">
+    <Position X="1" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEAAAAAAAAECAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Authentication\JwtSettings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Authentication.JwtTokenGenerator">
+    <Position X="2.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Authentication\JwtTokenGenerator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.Configurations.OrderConfiguration" BaseTypeListCollapsed="true">
+    <Position X="5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Persistence\Configurations\OrderConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.Configurations.OrderItemConfiguration" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Persistence\Configurations\OrderItemConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.Configurations.ProductConfiguration" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Persistence\Configurations\ProductConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.Configurations.SectionConfiguration" BaseTypeListCollapsed="true">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Persistence\Configurations\SectionConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.Configurations.UserConfiguration" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Persistence\Configurations\UserConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.Repositories.CartRepository">
+    <Position X="9" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAQAAAAAEAAAAAAAAAABAQIAAACAAA=</HashCode>
+      <FileName>Persistence\Repositories\CartRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.Repositories.GenericRepository&lt;T&gt;">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYBAAAAAAAAAAAAAAAAAAAAAAEBAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Persistence\Repositories\GenericRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.Repositories.OrderItemRepository">
+    <Position X="8.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Persistence\Repositories\OrderItemRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.Repositories.OrderRepository">
+    <Position X="1.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Persistence\Repositories\OrderRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.Repositories.ProductRepository">
+    <Position X="4" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAEAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Persistence\Repositories\ProductRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.Repositories.SectionRepository">
+    <Position X="10.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Persistence\Repositories\SectionRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.Repositories.UnitOfWork">
+    <Position X="10.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAERAGAAACEAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAQ=</HashCode>
+      <FileName>Persistence\Repositories\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.Repositories.UserRepository">
+    <Position X="6.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Persistence\Repositories\UserRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.DbInitializer" BaseTypeListCollapsed="true">
+    <Position X="2.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAABAAAAAAAAAAAAAAgAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Persistence\DbInitializer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.DependencyInjection">
+    <Position X="4.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Persistence\DependencyInjection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pizzeria.Infrastructure.Persistence.PizzeriaDbContext" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAEAAAAAAAAAAAAAEAAAAAAAAEAAAAAAAAQ=</HashCode>
+      <FileName>Persistence\PizzeriaDbContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Arial" Size="8.25" />
+</ClassDiagram>
