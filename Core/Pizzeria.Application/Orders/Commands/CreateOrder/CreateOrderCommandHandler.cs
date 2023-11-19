@@ -19,7 +19,6 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Err
     {
         Domain.Entities.Cart cart = await _unitOfWork.Cart.GetCart();
 
-
         var orderItems = await Task.WhenAll(cart.Items.Select(async item =>
         {
             var product = await _unitOfWork.Products.GetProductById(item.ProductId);
